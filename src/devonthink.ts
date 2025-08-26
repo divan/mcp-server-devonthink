@@ -32,6 +32,7 @@ import { replicateRecordTool } from "./tools/replicateRecord.js";
 import { duplicateRecordTool } from "./tools/duplicateRecord.js";
 import { convertRecordTool } from "./tools/convertRecord.js";
 import { updateRecordContentTool } from "./tools/updateRecordContent.js";
+import { updateCustomMetaDataTool } from "./tools/updateCustomMetaData.js";
 
 export const createServer = async () => {
   const server = new Server(
@@ -72,6 +73,7 @@ export const createServer = async () => {
     duplicateRecordTool,
     convertRecordTool,
     updateRecordContentTool,
+    updateCustomMetaDataTool,
   ];
 
   server.setRequestHandler(ListToolsRequestSchema, async () => {

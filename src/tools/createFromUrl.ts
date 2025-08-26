@@ -52,6 +52,10 @@ const CreateFromUrlSchema = z
       .describe(
         "The name of the database to create the record in (defaults to current database)"
       ),
+    customMetaData: z
+      .record(z.any())
+      .optional()
+      .describe("Custom metadata as key-value pairs (e.g., {'Year': 2024, 'Country': 'USA'})"),
   })
   .strict();
 
@@ -80,6 +84,7 @@ const createFromUrl = async (
     referrer,
     pdfOptions,
     databaseName,
+    customMetaData,
   } = input;
 
   const script = `
@@ -156,6 +161,19 @@ const createFromUrl = async (
         }
         
         if (newRecord) {
+          // Add custom metadata if provided
+          ${customMetaData ? 
+            `const metadata = ${JSON.stringify(customMetaData)};
+            for (const [key, value] of Object.entries(metadata)) {
+              try {
+                theApp.addCustomMetaData(value, {for: key, to: newRecord});
+              } catch (metadataError) {
+                console.log("Warning: Failed to set custom metadata '" + key + "': " + metadataError.toString());
+              }
+            }` : 
+            "// No custom metadata to add"
+          }
+          
           return JSON.stringify({
             success: true,
             recordId: newRecord.id(),
