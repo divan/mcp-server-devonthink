@@ -33,6 +33,9 @@
   - **`duplicateRecord.ts`**: Duplicates records to any database (creates independent copies)
   - **`convertRecord.ts`**: Converts records to different formats
   - **`updateRecordContent.ts`**: Updates the content of existing records while preserving UUID
+  - **`updateCustomMetaData.ts`**: Updates custom metadata (custom columns) for records
+  - **`updateRecordProperties.ts`**: Updates standard record properties like URL, comment, rating
+  - **`getCustomMetaData.ts`**: Retrieves custom metadata (custom columns) from records
 - **`src/utils/`**: Utility functions
   - **`escapeString.ts`**: Provides safe string escaping for JXA script interpolation
 - **`src/applescript/execute.ts`**: A utility module that provides the `executeJxa` function to run JXA scripts via the command line.
@@ -64,6 +67,9 @@ The MCP server currently provides the following tools:
 21. **`duplicate_record`** - Duplicate records to any database (creates independent copies)
 22. **`convert_record`** - Convert records to different formats (plain text, rich text, markdown, HTML, PDF, etc.)
 23. **`update_record_content`** - Update the content of existing records while preserving UUID and metadata
+24. **`update_custom_metadata`** - Update custom metadata (custom columns) for records
+25. **`update_record_properties`** - Update standard record properties like URL, comment, rating, etc.
+26. **`get_custom_metadata`** - Retrieve custom metadata (custom columns) from records
 
 ## Adding New Tools
 

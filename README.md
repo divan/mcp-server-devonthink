@@ -100,6 +100,35 @@ This MCP server provides access to DEVONthink functionality via the Model Contex
     - Input: primary record UUID, optional second record UUID, database name, and comparison type
     - Returns: Either similar records (single mode) or detailed comparison analysis (two-record mode)
 
+17. `replicate_record`
+    - Replicates records within the same database (creates linked references)
+    - Input: record identifier and destination group UUID
+
+18. `duplicate_record`
+    - Duplicates records to any database (creates independent copies)
+    - Input: record identifier and destination group UUID
+
+19. `convert_record`
+    - Converts records to different formats (plain text, rich text, markdown, HTML, PDF, etc.)
+    - Input: record identifier and target format
+
+20. `update_record_content`
+    - Updates the content of existing records while preserving UUID and metadata
+    - Input: record UUID and new content
+
+21. `update_custom_metadata`
+    - Updates custom metadata (custom columns) for records
+    - Input: record UUID and custom metadata key-value pairs
+
+22. `update_record_properties`
+    - Updates standard record properties like URL, comment, rating, label, flag, and name
+    - Input: record UUID and property values to update
+
+23. `get_custom_metadata`
+    - Retrieves custom metadata (custom columns) from records
+    - Input: record UUID and optional array of specific keys to retrieve
+    - Returns: Object containing all found custom metadata key-value pairs
+
 ### Example: Search Tool
 
 ```json
